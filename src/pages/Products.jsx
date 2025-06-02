@@ -13,22 +13,22 @@ const Products = () => {
   const { startLoading, stopLoading } = useLoading()
 
   useEffect(() => {
-    const loadProducts = async () => {
-      startLoading()
-      try {
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1200))
-        setProducts(productsData.products)
-        setIsLoading(false)
-      } catch (error) {
-        console.error("Failed to load products:", error)
-      } finally {
-        stopLoading()
-      }
-    }
-    
-    loadProducts()
-  }, [startLoading, stopLoading])
+		const loadProducts = async () => {
+			startLoading();
+			try {
+				// Simulate API call
+				await new Promise((resolve) => setTimeout(resolve, 1200));
+				setProducts(productsData.products);
+				setIsLoading(false);
+			} catch (error) {
+				console.error("Failed to load products:", error);
+			} finally {
+				stopLoading();
+			}
+		};
+
+		loadProducts();
+	}, []);
   
   // Filter products based on search term
   const filteredProducts = products.filter(product => 

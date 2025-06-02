@@ -11,34 +11,76 @@ const Orders = () => {
   const { startLoading, stopLoading } = useLoading()
 
   useEffect(() => {
-    const loadOrders = async () => {
-      startLoading()
-      try {
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1000))
-        
-        // Sample orders data
-        const ordersData = [
-          { id: 'ORD-1234', customer: 'John Doe', date: '2024-07-15', status: 'completed', amount: 129.99 },
-          { id: 'ORD-1235', customer: 'Jane Smith', date: '2024-07-15', status: 'processing', amount: 79.99 },
-          { id: 'ORD-1236', customer: 'Robert Johnson', date: '2024-07-14', status: 'completed', amount: 199.99 },
-          { id: 'ORD-1237', customer: 'Emma Williams', date: '2024-07-14', status: 'cancelled', amount: 49.99 },
-          { id: 'ORD-1238', customer: 'Michael Brown', date: '2024-07-13', status: 'processing', amount: 159.99 },
-          { id: 'ORD-1239', customer: 'Olivia Jones', date: '2024-07-13', status: 'completed', amount: 89.99 },
-          { id: 'ORD-1240', customer: 'William Davis', date: '2024-07-12', status: 'processing', amount: 69.99 }
-        ]
-        
-        setOrders(ordersData)
-        setIsLoading(false)
-      } catch (error) {
-        console.error("Failed to load orders:", error)
-      } finally {
-        stopLoading()
-      }
-    }
-    
-    loadOrders()
-  }, [startLoading, stopLoading])
+		const loadOrders = async () => {
+			startLoading();
+			try {
+				// Simulate API call
+				await new Promise((resolve) => setTimeout(resolve, 1000));
+
+				// Sample orders data
+				const ordersData = [
+					{
+						id: "ORD-1234",
+						customer: "John Doe",
+						date: "2024-07-15",
+						status: "completed",
+						amount: 129.99,
+					},
+					{
+						id: "ORD-1235",
+						customer: "Jane Smith",
+						date: "2024-07-15",
+						status: "processing",
+						amount: 79.99,
+					},
+					{
+						id: "ORD-1236",
+						customer: "Robert Johnson",
+						date: "2024-07-14",
+						status: "completed",
+						amount: 199.99,
+					},
+					{
+						id: "ORD-1237",
+						customer: "Emma Williams",
+						date: "2024-07-14",
+						status: "cancelled",
+						amount: 49.99,
+					},
+					{
+						id: "ORD-1238",
+						customer: "Michael Brown",
+						date: "2024-07-13",
+						status: "processing",
+						amount: 159.99,
+					},
+					{
+						id: "ORD-1239",
+						customer: "Olivia Jones",
+						date: "2024-07-13",
+						status: "completed",
+						amount: 89.99,
+					},
+					{
+						id: "ORD-1240",
+						customer: "William Davis",
+						date: "2024-07-12",
+						status: "processing",
+						amount: 69.99,
+					},
+				];
+
+				setOrders(ordersData);
+				setIsLoading(false);
+			} catch (error) {
+				console.error("Failed to load orders:", error);
+			} finally {
+				stopLoading();
+			}
+		};
+
+		loadOrders();
+	}, []);
   
   // Filter orders based on search term
   const filteredOrders = orders.filter(order => 

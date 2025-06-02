@@ -12,22 +12,22 @@ const TeamMembers = () => {
   const { startLoading, stopLoading } = useLoading()
   
   useEffect(() => {
-    const loadTeamMembers = async () => {
-      startLoading()
-      try {
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 800))
-        setTeamMembers(teamData.members)
-        setIsLoading(false)
-      } catch (error) {
-        console.error("Failed to load team members:", error)
-      } finally {
-        stopLoading()
-      }
-    }
-    
-    loadTeamMembers()
-  }, [startLoading, stopLoading])
+		const loadTeamMembers = async () => {
+			startLoading();
+			try {
+				// Simulate API call
+				await new Promise((resolve) => setTimeout(resolve, 800));
+				setTeamMembers(teamData.members);
+				setIsLoading(false);
+			} catch (error) {
+				console.error("Failed to load team members:", error);
+			} finally {
+				stopLoading();
+			}
+		};
+
+		loadTeamMembers();
+	}, []);
   
   // Filter team members based on search term
   const filteredMembers = teamMembers.filter(member => 
