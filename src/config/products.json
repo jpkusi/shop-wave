@@ -1,0 +1,32 @@
+{
+  "products": [
+    {
+      "id": "product-1",
+      "name": "Vitamin Boost",
+      "sku": "VIT-SP0123KA",
+      "price": 19.99,
+      "icon": "🍊"
+    },
+    {
+      "id": "product-2",
+      "name": "Organic Protein Bar",
+      "sku": "PRO-SP0225GA",
+      "price": 3.99,
+      "icon": "🍫"
+    },
+    {
+      "id": "product-3",
+      "name": "Pain Relief Cream",
+      "sku": "MED-SP0358KA",
+      "price": 12.99,
+      "icon": "🧴"
+    },
+    {
+      "id": "product-4", 
+      "name": "Immune Support Tablets",
+      "sku": "VIT-SP0432MB",
+      "price": 24.99,
+      "icon": "💊"
+    }
+  ]
+}

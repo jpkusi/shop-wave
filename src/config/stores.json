@@ -1,0 +1,22 @@
+{
+  "stores": [
+    {
+      "id": "healthmart",
+      "name": "HealthMart",
+      "members": 214,
+      "logo": "🔴"
+    },
+    {
+      "id": "fashionstar",
+      "name": "Fashion Star",
+      "members": 124,
+      "logo": "👕"
+    },
+    {
+      "id": "techmart",
+      "name": "TechMart",
+      "members": 87,
+      "logo": "📱"
+    }
+  ]
+}

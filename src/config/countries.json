@@ -1,0 +1,46 @@
+{
+  "countries": [
+    {
+      "id": "de",
+      "name": "Germany",
+      "flag": "🇩🇪",
+      "sales": 4.4,
+      "currency": "EUR"
+    },
+    {
+      "id": "fr",
+      "name": "France",
+      "flag": "🇫🇷",
+      "sales": 3.8,
+      "currency": "EUR"
+    },
+    {
+      "id": "it",
+      "name": "Italy",
+      "flag": "🇮🇹",
+      "sales": 3.1,
+      "currency": "EUR"
+    },
+    {
+      "id": "at",
+      "name": "Austria",
+      "flag": "🇦🇹",
+      "sales": 2.9,
+      "currency": "EUR"
+    },
+    {
+      "id": "ch",
+      "name": "Switzerland",
+      "flag": "🇨🇭",
+      "sales": 2.7,
+      "currency": "CHF"
+    },
+    {
+      "id": "es",
+      "name": "Spain",
+      "flag": "🇪🇸",
+      "sales": 1.9,
+      "currency": "EUR"
+    }
+  ]
+}

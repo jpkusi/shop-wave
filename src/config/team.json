@@ -1,0 +1,28 @@
+{
+  "members": [
+    {
+      "id": 1,
+      "name": "John Smith",
+      "role": "Manager",
+      "avatar": "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=100",
+      "email": "john.smith@example.com",
+      "phone": "+1 555-123-4567"
+    },
+    {
+      "id": 2,
+      "name": "Anastasiya Popov",
+      "role": "Digital Marketing",
+      "avatar": "https://images.pexels.com/photos/3754438/pexels-photo-3754438.jpeg?auto=compress&cs=tinysrgb&w=100",
+      "email": "a.popov@example.com",
+      "phone": "+1 555-987-6543"
+    },
+    {
+      "id": 3,
+      "name": "Carl Hunt",
+      "role": "Digital Marketing",
+      "avatar": "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=100",
+      "email": "c.hunt@example.com",
+      "phone": "+1 555-765-4321"
+    }
+  ]
+}
