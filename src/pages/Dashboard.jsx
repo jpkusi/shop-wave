@@ -22,12 +22,14 @@ const Dashboard = () => {
 
   useEffect(() => {
     const loadData = async () => {
-      startLoading()
-      try {
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1000))
+      startLoading();
 
-        // Set stats data
+      const startTime = Date.now();
+
+      try {
+        // Simulate fetching
+        await new Promise(resolve => setTimeout(resolve, 500));
+
         setStats({
           processing: 210,
           processed: 109,
@@ -37,21 +39,28 @@ const Dashboard = () => {
           totalOrders: 315,
           totalSold: 256,
           returns: 49
-        })
+        });
 
-        // Set top products
-        setTopProducts(productsData.products.slice(0, 3))
+        setTopProducts(productsData.products.slice(0, 3));
 
-        setIsLoading(false)
+        const elapsedTime = Date.now() - startTime;
+        const minimumLoadingTime = 500;
+
+        if (elapsedTime < minimumLoadingTime) {
+          await new Promise(resolve => setTimeout(resolve, minimumLoadingTime - elapsedTime));
+        }
+
+        setIsLoading(false);
       } catch (error) {
-        console.error("Failed to load dashboard data:", error)
+        console.error("Failed to load dashboard data:", error);
       } finally {
-        stopLoading()
+        stopLoading();
       }
-    }
+    };
 
-    loadData()
-  }, [])
+    loadData();
+  }, []);
+
 
   // Actions for header
   const headerActions = (
@@ -74,7 +83,7 @@ const Dashboard = () => {
       />
 
       {/* Stats Row */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6 transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
         {isLoading ? (
           <>
             <StatCardSkeleton />

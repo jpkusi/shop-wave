@@ -78,9 +78,12 @@ const LoginPage = () => {
     }
   };
 
+  const handleSignUp = () => {
+    navigate("/signup")
+  }
+
   return (
     <div className="flex h-screen">
-      {/* Left: Login Form */}
       <div className="w-full md:w-1/2 flex justify-center items-center bg-gray-100 p-4">
         <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-6 rounded shadow-md w-full max-w-sm">
           <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
@@ -119,7 +122,7 @@ const LoginPage = () => {
 
           <p className="text-sm text-center">
             Don’t have an account?{' '}
-            <Link to="/register" className="text-blue-600 hover:underline">
+            <Link to="/signup" className="text-blue-600 hover:underline">
               Sign up here
             </Link>
           </p>

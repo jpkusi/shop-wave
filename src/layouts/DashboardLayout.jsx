@@ -27,11 +27,10 @@ const DashboardLayout = () => {
 				closeSidebar={() => setSidebarOpen(false)}
 			/>
 
-			{/* Main content */}
 			<div className="flex flex-col flex-1 overflow-hidden">
 				<Topbar toggleSidebar={toggleSidebar} />
 
-				<main className="flex-1 overflow-y-auto p-4 md:p-6">
+				<main className="flex-1 scrollbar-hide overflow-y-scroll p-4 md:p-6 mt-20">
 					{isLoading && <LoadingScreen fullScreen />}
 					<Outlet />
 				</main>

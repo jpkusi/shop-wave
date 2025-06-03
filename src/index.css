@@ -53,4 +53,5 @@
   .sidebar-link.active {
     @apply bg-primary-50 text-primary-600 font-medium;
   }
+  
 }

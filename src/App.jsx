@@ -4,6 +4,7 @@ import DashboardLayout from './layouts/DashboardLayout';
 import LoadingScreen from './components/LoadingScreen';
 import LoginPage from './pages/LoginPage';
 import { useAuth } from './hooks/useAuth';
+import RegisterPage from './pages/Register';
 
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 const Products = lazy(() => import('./pages/Products'));
@@ -22,6 +23,8 @@ function App() {
   return (
     <Routes>
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/signup" element={<RegisterPage />} />
+
       <Route
         path="/"
         element={
