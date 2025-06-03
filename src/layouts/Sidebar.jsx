@@ -1,31 +1,38 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { FiBarChart2, FiBox, FiShoppingBag, FiUsers, FiSettings, FiHelpCircle, FiLogOut } from 'react-icons/fi'
 import storesData from '@config/stores.json'
+import { useAuth } from '@/hooks/useAuth';
 
 const Sidebar = ({ isOpen, closeSidebar }) => {
-  const location = useLocation()
-  
-  const isActive = (path) => location.pathname.startsWith(path)
-  
-  // Navigation items
-  const mainNavItems = [
-    { path: '/dashboard', icon: <FiBarChart2 />, label: 'Dashboard' },
-    { path: '/products', icon: <FiBox />, label: 'Products' },
-    { path: '/orders', icon: <FiShoppingBag />, label: 'Orders' },
-    { path: '/team', icon: <FiUsers />, label: 'Team Members' }
-  ]
-  
-  const bottomNavItems = [
-    { path: '/settings', icon: <FiSettings />, label: 'Settings' },
-    { path: '/help', icon: <FiHelpCircle />, label: 'Get Help' },
-    { path: '/logout', icon: <FiLogOut />, label: 'Logout' }
-  ]
+	const { logout } = useAuth();
+	const navigate = useNavigate();
+	const location = useLocation();
 
-  return (
+
+	const isActive = (path) => location.pathname.startsWith(path)
+
+	// Navigation items
+	const mainNavItems = [
+		{ path: '/dashboard', icon: <FiBarChart2 />, label: 'Dashboard' },
+		{ path: '/products', icon: <FiBox />, label: 'Products' },
+		{ path: '/orders', icon: <FiShoppingBag />, label: 'Orders' },
+		{ path: '/team', icon: <FiUsers />, label: 'Team Members' }
+	]
+
+	const bottomNavItems = [
+		{ path: '/settings', icon: <FiSettings />, label: 'Settings' },
+		{ path: '/help', icon: <FiHelpCircle />, label: 'Get Help' },
+		{ path: '/logout', icon: <FiLogOut />, label: 'Logout' }
+	]
+
+	const handleLogout = () => {
+		logout();
+		navigate('/login');
+	};
+	return (
 		<aside
-			className={`fixed inset-y-0 left-0 z-30 w-64 transition-transform duration-300 transform bg-white border-r border-gray-100 ${
-				isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
-			} lg:relative lg:translate-x-0`}
+			className={`fixed inset-y-0 left-0 z-30 w-64 transition-transform duration-300 transform bg-white border-r border-gray-100 ${isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+				} lg:relative lg:translate-x-0`}
 		>
 			{/* Logo & branding */}
 			<div className="flex items-center px-4 py-5">
@@ -108,9 +115,8 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
 								<Link
 									key={store.id}
 									to={`/store/${store.id}`}
-									className={`sidebar-link ${
-										location.pathname === `/store/${store.id}` ? "active" : ""
-									}`}
+									className={`sidebar-link ${location.pathname === `/store/${store.id}` ? "active" : ""
+										}`}
 									onClick={() => closeSidebar()}
 								>
 									<span className="text-xl">{store.logo}</span>
@@ -127,20 +133,34 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
 						Others
 					</p>
 					<nav className="mt-2">
-						{bottomNavItems.map((item) => (
-							<Link
-								key={item.path}
-								to={item.path}
-								className={`sidebar-link ${
-									isActive(item.path) ? "active" : ""
-								}`}
-								onClick={() => closeSidebar()}
-							>
-								<span>{item.icon}</span>
-								<span>{item.label}</span>
-							</Link>
-						))}
+						{bottomNavItems.map((item) => {
+							if (item.path === '/logout') {
+								return (
+									<button
+										key={item.path}
+										onClick={handleLogout}
+										className="sidebar-link flex items-center gap-2 text-left w-full"
+									>
+										<span>{item.icon}</span>
+										<span>{item.label}</span>
+									</button>
+								);
+							}
+
+							return (
+								<Link
+									key={item.path}
+									to={item.path}
+									className={`sidebar-link ${isActive(item.path) ? 'active' : ''}`}
+									onClick={() => closeSidebar()}
+								>
+									<span>{item.icon}</span>
+									<span>{item.label}</span>
+								</Link>
+							);
+						})}
 					</nav>
+
 				</div>
 			</div>
 		</aside>

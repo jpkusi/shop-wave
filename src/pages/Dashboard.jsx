@@ -19,14 +19,14 @@ const Dashboard = () => {
   const [stats, setStats] = useState(null)
   const [topProducts, setTopProducts] = useState([])
   const { startLoading, stopLoading } = useLoading()
-  
+
   useEffect(() => {
     const loadData = async () => {
       startLoading()
       try {
         // Simulate API call
         await new Promise(resolve => setTimeout(resolve, 1000))
-        
+
         // Set stats data
         setStats({
           processing: 210,
@@ -38,10 +38,10 @@ const Dashboard = () => {
           totalSold: 256,
           returns: 49
         })
-        
+
         // Set top products
         setTopProducts(productsData.products.slice(0, 3))
-        
+
         setIsLoading(false)
       } catch (error) {
         console.error("Failed to load dashboard data:", error)
@@ -49,9 +49,9 @@ const Dashboard = () => {
         stopLoading()
       }
     }
-    
+
     loadData()
-  }, [startLoading, stopLoading])
+  }, [])
 
   // Actions for header
   const headerActions = (
@@ -67,12 +67,12 @@ const Dashboard = () => {
 
   return (
     <>
-      <PageHeader 
+      <PageHeader
         title="HealthMart"
         subtitle="214 members"
         actions={headerActions}
       />
-      
+
       {/* Stats Row */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         {isLoading ? (
@@ -84,7 +84,7 @@ const Dashboard = () => {
           </>
         ) : (
           <>
-            <StatCard 
+            <StatCard
               title="Orders Processing"
               value={stats.processing}
               subtitle="Remaining"
@@ -92,7 +92,7 @@ const Dashboard = () => {
               trend={5}
               color="primary"
             />
-            <StatCard 
+            <StatCard
               title="Orders Processed"
               value={stats.processed}
               subtitle="Processed"
@@ -100,7 +100,7 @@ const Dashboard = () => {
               trend={-2}
               color="secondary"
             />
-            <StatCard 
+            <StatCard
               title="Total"
               value={`${stats.total}k`}
               subtitle="Total"
@@ -108,7 +108,7 @@ const Dashboard = () => {
               trend={7}
               color="success"
             />
-            <StatCard 
+            <StatCard
               title="Sold Out"
               value={stats.soldOut}
               subtitle="Sold out"
@@ -139,7 +139,7 @@ const Dashboard = () => {
             ))}
           </div>
         </div>
-        
+
         {/* Performance Chart */}
         <div className="lg:col-span-2">
           <PerformanceChart />
@@ -176,7 +176,7 @@ const Dashboard = () => {
             </table>
           </div>
         </div>
-        
+
         {/* Team Members */}
         <div className="lg:col-span-1">
           <div className="flex justify-between items-center mb-4">

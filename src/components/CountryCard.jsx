@@ -1,7 +1,7 @@
 const CountryCard = ({ flag, name, value, metric = "products" }) => {
   return (
     <div className="card hover:shadow-md transition-shadow cursor-pointer">
-      <div className="flex items-center space-x-2">
+      <div className="flex">
         <span className="text-2xl">{flag}</span>
         <div>
           <h3 className="text-gray-800 font-medium">{name}</h3>
