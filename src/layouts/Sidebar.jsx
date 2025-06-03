@@ -2,6 +2,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { FiBarChart2, FiBox, FiShoppingBag, FiUsers, FiSettings, FiHelpCircle, FiLogOut } from 'react-icons/fi'
 import storesData from '@config/stores.json'
 import { useAuth } from '@/hooks/useAuth';
+import { GiWaveSurfer } from "react-icons/gi";
+
 
 const Sidebar = ({ isOpen, closeSidebar }) => {
 	const { logout } = useAuth();
@@ -11,7 +13,6 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
 
 	const isActive = (path) => location.pathname.startsWith(path)
 
-	// Navigation items
 	const mainNavItems = [
 		{ path: '/dashboard', icon: <FiBarChart2 />, label: 'Dashboard' },
 		{ path: '/products', icon: <FiBox />, label: 'Products' },
@@ -35,8 +36,9 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
 				} lg:relative lg:translate-x-0`}
 		>
 			{/* Logo & branding */}
-			<div className="flex items-center px-4 py-5">
-				{/* <img src="https://via.placeholder.com/36" alt="Logo" className="w-9 h-9 mr-2" /> */}
+			<div className="flex  gap-10 items-center px-4 py-5">
+
+				<GiWaveSurfer size="30" />
 				<h1 className="text-xl font-bold text-gray-900">ShopWave</h1>
 
 				{/* Mobile close button */}
